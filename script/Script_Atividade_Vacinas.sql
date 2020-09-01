@@ -31,6 +31,7 @@ create table pesquisador(
 );
 create table vacina(
 	id int not null auto_increment,
+    nome varchar(50) not null,
     pais varchar(50) not null,
     estagio varchar(20),
     dtInicioPesquisa date not null,
