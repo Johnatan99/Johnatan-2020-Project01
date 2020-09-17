@@ -8,9 +8,9 @@ public class VoluntarioVO extends PessoaVO {
 		super();
 	}
 
-	public VoluntarioVO(String nome, LocalDate dtNascimento, char sexo, String cpf,
+	public VoluntarioVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf,
 			int notaAplicacao) {
-		super(nome, dtNascimento, sexo, cpf, notaAplicacao);
+		super(nome, dtNascimento, tipoPessoa, sexo, cpf, notaAplicacao);
 	}
 	
 }

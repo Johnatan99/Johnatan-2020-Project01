@@ -2,19 +2,21 @@ package atividade_vacina.model.vo;
 
 import java.time.LocalDate;
 
-public abstract class PessoaVO {
+public class PessoaVO {
 	
 	private int id;
 	private String nome;
 	private LocalDate dtNascimento;
-	private char sexo;
+	private String tipoPessoa;
+	private String sexo;
 	private String cpf;
 	private int notaAplicacao;
 	
-	public PessoaVO(String nome, LocalDate dtNascimento, char sexo, String cpf, int notaAplicacao) {
+	public PessoaVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf, int notaAplicacao) {
 		super();
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
+		this.tipoPessoa = tipoPessoa;
 		this.sexo = sexo;
 		this.cpf = cpf;
 		this.notaAplicacao = notaAplicacao;
@@ -41,10 +43,16 @@ public abstract class PessoaVO {
 	public void setDtNascimento(LocalDate dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
-	public char getSexo() {
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getCpf() {
@@ -62,7 +70,7 @@ public abstract class PessoaVO {
 	
 	@Override
 	public String toString() {
-		return "PessoaVO [id=" + id + ", nome=" + nome + ", dtNascimento=" + dtNascimento + ", sexo=" + sexo + ", cpf="
+		return "PessoaVO [id=" + id + ", nome=" + nome + ", dtNascimento=" + dtNascimento + ", Tipo Pessoa= "+tipoPessoa+", sexo=" + sexo + ", cpf="
 				+ cpf + ", notaAplicacao=" + notaAplicacao + "]";
 	}
 	

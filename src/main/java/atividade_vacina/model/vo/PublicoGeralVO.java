@@ -7,9 +7,9 @@ public class PublicoGeralVO extends PessoaVO{
 	public PublicoGeralVO() {
 		super();
 	}
-	public PublicoGeralVO(String nome, LocalDate dtNascimento, char sexo, String cpf,
+	public PublicoGeralVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf,
 			int notaAplicacao) {
-		super(nome, dtNascimento, sexo, cpf, notaAplicacao);
+		super(nome, dtNascimento, tipoPessoa, sexo, cpf, notaAplicacao);
 	}
 	
 	
