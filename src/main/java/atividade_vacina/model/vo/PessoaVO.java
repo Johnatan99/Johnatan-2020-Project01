@@ -68,13 +68,4 @@ public class PessoaVO {
 		this.notaAplicacao = notaAplicacao;
 	}
 	
-	@Override
-	public String toString() {
-		return "PessoaVO [id=" + id + ", nome=" + nome + ", dtNascimento=" + dtNascimento + ", Tipo Pessoa= "+tipoPessoa+", sexo=" + sexo + ", cpf="
-				+ cpf + ", notaAplicacao=" + notaAplicacao + "]";
-	}
-	
-	
-	
-	
 }

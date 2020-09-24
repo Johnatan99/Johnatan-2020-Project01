@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import java.time.LocalDate;
+
 
 import atividade_vacina.model.vo.PessoaVO;
 
@@ -96,7 +97,12 @@ public class PessoaDAO {
 		PessoaVO pessoaEncontrada = new PessoaVO();
 		pessoaEncontrada.setId(rs.getInt("id"));
 		pessoaEncontrada.setNome(rs.getString("nome"));
-		//pessoaEncontrada.setDtNascimento(rs.getString("dtNascimento"));
+		
+		//Converte a data oriunda do banco para LocalDate e preenche no VO
+		
+		Date dataSQL = rs.getDate("dtNascimento");	
+		pessoaEncontrada.setDtNascimento(dataSQL.toLocalDate());
+		
 		pessoaEncontrada.setSexo(rs.getString("sexo"));
 		pessoaEncontrada.setCpf(rs.getString("cpf"));
 		pessoaEncontrada.setTipoPessoa(rs.getString("tipoPessoa"));
@@ -105,6 +111,28 @@ public class PessoaDAO {
 		return pessoaEncontrada;
 	}
 	
+	private PessoaVO buscarPorId(int id) {
+		Connection conn = Banco.getConnection();
+		String sql = "select * "
+				    +"from pessoa"
+				    + "where id = ?";
+		PreparedStatement ps = Banco.getPreparedStatement(conn, sql);
+		PessoaVO pessoaBuscada = null;
+		ResultSet rs = null;
+		try {
+		
+		ps.setInt(1, id);
+		rs = ps.executeQuery();
+		}catch(SQLException e) {
+			System.out.println("Erro ao buscar pessoa por id. \nErro: "+e.getMessage());
+		}finally {
+			Banco.closeConnection(conn);
+			Banco.closePreparedStatement(ps);
+			Banco.closeResultSet(rs);
+		}
+		
+		return pessoaBuscada;
+	}
 	private List<PessoaVO> pesquisarTodos() {
 		Connection conn = Banco.getConnection();
 		String sql = "select * from pessoa";
