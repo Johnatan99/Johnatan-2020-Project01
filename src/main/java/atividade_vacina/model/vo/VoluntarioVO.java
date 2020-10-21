@@ -9,8 +9,8 @@ public class VoluntarioVO extends PessoaVO {
 	}
 
 	public VoluntarioVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf,
-			int notaAplicacao) {
-		super(nome, dtNascimento, tipoPessoa, sexo, cpf, notaAplicacao);
+			VacinaVO[] vacinasAplicadas, int notaAplicacao) {
+		super(nome, dtNascimento, tipoPessoa, sexo, cpf, vacinasAplicadas, notaAplicacao);
 	}
 	
 }

@@ -9,17 +9,19 @@ public class VacinaVO {
 	private String pais;
 	private String estagio;
 	private LocalDate dtInicioPesquisa;
-	private PesquisadorVO pesquisador;
+	private LocalDate dtTerminoPesquisa;
+    public PesquisadorVO criador;
 	
 	public VacinaVO(int id, String nome, String pais, String estagio, LocalDate dtInicioPesquisa,
-			PesquisadorVO pesquisador) {
+			LocalDate dtTerminoPesquisa, PesquisadorVO criador) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.pais = pais;
 		this.estagio = estagio;
 		this.dtInicioPesquisa = dtInicioPesquisa;
-		this.pesquisador = pesquisador;
+		this.dtTerminoPesquisa = dtTerminoPesquisa;
+		this.criador = criador;
 	}
 	public VacinaVO() {
 		super();
@@ -54,16 +56,24 @@ public class VacinaVO {
 	public void setDtInicioPesquisa(LocalDate dtInicioPesquisa) {
 		this.dtInicioPesquisa = dtInicioPesquisa;
 	}
-	public PesquisadorVO getPesquisador() {
-		return pesquisador;
+	public  LocalDate getDtTerminoPesquisa() {
+		return dtTerminoPesquisa;
 	}
-	public void setPesquisador(PesquisadorVO pesquisador) {
-		this.pesquisador = pesquisador;
+	public void setDtTerminoPesquisa(LocalDate dtTerminoPesquisa) {
+		this.dtTerminoPesquisa = dtTerminoPesquisa;
+	}
+	public PesquisadorVO getPesquisador() {
+		return criador;
+	}
+	public void setPesquisador(PesquisadorVO criador) {
+		this.criador = criador;
 	}
 	@Override
 	public String toString() {
 		return "VacinaVO [id=" + id + ", nome=" + nome + ", pais=" + pais + ", estagio=" + estagio
-				+ ", dtInicioPesquisa=" + dtInicioPesquisa + ", pesquisador=" + pesquisador + "]";
+				+ ", dtInicioPesquisa=" + dtInicioPesquisa + ", dtTerminoPesquisa=" + dtTerminoPesquisa
+				+ ", pesquisador=" + criador + "]";
 	}
+	
 	
 }

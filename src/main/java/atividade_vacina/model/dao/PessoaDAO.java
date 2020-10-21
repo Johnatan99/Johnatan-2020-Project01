@@ -13,21 +13,27 @@ import java.util.ArrayList;
 
 
 import atividade_vacina.model.vo.PessoaVO;
+import atividade_vacina.model.vo.VacinaVO;
 
 public class PessoaDAO {
 	
-	private PessoaVO inserir(PessoaVO novaPessoa) {
+	public PessoaVO inserir(PessoaVO novaPessoa) {
 		Connection conn = Banco.getConnection();
-		String sql = "insert into pessoa(nome, dtNascimento, sexo, cpf, , tipoPessoa, notaAplicacao) values(?, ?, ?, ?, ?, ?)";
+		String sql = "insert into pessoa(nome, dtNascimento, sexo, cpf, , tipoPessoa, , vacinasAplicadas, notaAplicacao) values(?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = Banco.getPreparedStatement(conn, sql);
-		
+		List<VacinaVO> vacinasAplicadas = new ArrayList<VacinaVO>();
+		VacinaVO vacina = new VacinaVO();
 		try {
 			ps.setString(1, novaPessoa.getNome());
 			ps.setDate(2, java.sql.Date.valueOf(novaPessoa.getDtNascimento()));
 			ps.setString(3, novaPessoa.getSexo());
 			ps.setString(4, novaPessoa.getCpf());
 			ps.setString(5, novaPessoa.getTipoPessoa());
-			ps.setInt(6, novaPessoa.getNotaAplicacao());
+			
+			//vacinas aplicadas:
+			ps.setInt(6, vacina.getId());
+			
+			ps.setInt(7, novaPessoa.getNotaAplicacao());
 			
 		    int codigoRetorno = ps.executeUpdate();
 		    if(codigoRetorno == Banco.CODIGO_RETORNO_SUCESSO) {
@@ -37,8 +43,6 @@ public class PessoaDAO {
 		    }
 		}catch(SQLException e) {
 			if(novaPessoa.getTipoPessoa() != null) {
-				System.out.println("Erro ao inserir "+novaPessoa.getTipoPessoa()+".\n Erro: "+e.getMessage());
-			}else {
 				System.out.println("Erro ao inserir pessoa.\n Erro: "+e.getMessage());
 			}
 		}finally {
@@ -48,7 +52,7 @@ public class PessoaDAO {
 		return novaPessoa;
 	}
 	
-	private boolean alterar(PessoaVO novaPessoa) {
+	public boolean alterar(PessoaVO pessoaAtualizada) {
 		Connection conn = Banco.getConnection();
 		String sql = "update pessoa "
 				   + "set nome = ?, dtNascimenti = ?, sexo = ?, cpf = ?, tipoPessoa = ?, notaAplicacao = ? "
@@ -57,21 +61,17 @@ public class PessoaDAO {
 		boolean alterou = false;
 		
 		try {
-			ps.setString(1, novaPessoa.getNome());
-			ps.setDate(2, java.sql.Date.valueOf(novaPessoa.getDtNascimento()));
-			ps.setString(3, novaPessoa.getSexo());
-			ps.setString(4, novaPessoa.getCpf());
-			ps.setString(5, novaPessoa.getTipoPessoa());
-			ps.setInt(6, novaPessoa.getNotaAplicacao());
-			ps.setInt(7, novaPessoa.getId());
+			ps.setString(1, pessoaAtualizada.getNome());
+			ps.setDate(2, java.sql.Date.valueOf(pessoaAtualizada.getDtNascimento()));
+			ps.setString(3, pessoaAtualizada.getSexo());
+			ps.setString(4, pessoaAtualizada.getCpf());
+			ps.setString(5, pessoaAtualizada.getTipoPessoa());
+			ps.setInt(6, pessoaAtualizada.getNotaAplicacao());
+			ps.setInt(7, pessoaAtualizada.getId());
 			int codigoRetorno = ps.executeUpdate();
 			alterou = (codigoRetorno == Banco.CODIGO_RETORNO_SUCESSO);
 		} catch(SQLException e){
-			if(novaPessoa.getTipoPessoa() != null) {
-				System.out.println("Erro ao alterar "+novaPessoa.getTipoPessoa()+".\n Erro: "+e.getMessage());
-			}else {
-				System.out.println("Erro ao alterar pessoa.\n Erro: "+e.getMessage());
-			}
+			System.out.println("Erro ao alterar pessoa.\n Erro: "+e.getMessage());
 		}
 		return alterou;
 	}
@@ -111,7 +111,7 @@ public class PessoaDAO {
 		return pessoaEncontrada;
 	}
 	
-	private PessoaVO buscarPorId(int id) {
+	public PessoaVO buscarPorId(int id) {
 		Connection conn = Banco.getConnection();
 		String sql = "select * "
 				    +"from pessoa"
@@ -133,7 +133,7 @@ public class PessoaDAO {
 		
 		return pessoaBuscada;
 	}
-	private List<PessoaVO> pesquisarTodos() {
+	public List<PessoaVO> buscarTodos() {
 		Connection conn = Banco.getConnection();
 		String sql = "select * from pessoa";
 		PreparedStatement ps = Banco.getPreparedStatement(conn, sql);
@@ -153,4 +153,45 @@ public class PessoaDAO {
 		}
 		return pessoasEncontradas;
 	}
+	
+	public boolean cpfJaCadastrado(PessoaVO pessoa) {
+		Connection conn = Banco.getConnection();
+		String sql = "select from pessoa where cpf = ?";
+		
+		if(pessoa.getId() > 0) {
+			sql += "and id <> ?";
+		}
+		PreparedStatement ps = Banco.getPreparedStatement(conn, sql);
+		boolean jaCadastrado = false;
+		
+		try {
+			ps.setString(1, pessoa.getCpf());
+			
+			if(pessoa.getId() > 0) {
+				ps.setInt(2, pessoa.getId());
+			}
+			
+			ResultSet rs = ps.executeQuery();
+			jaCadastrado = rs.next();
+		}catch(SQLException e) {
+			System.out.println("Erro ao verificar se o CPF "+pessoa.getCpf()+" já foi utilizado. \nErro: "+e.getMessage());
+		}finally {
+			Banco.closeConnection(conn);
+			Banco.closePreparedStatement(ps);
+		}
+		
+		return jaCadastrado;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

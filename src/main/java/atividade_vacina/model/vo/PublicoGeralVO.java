@@ -8,8 +8,8 @@ public class PublicoGeralVO extends PessoaVO{
 		super();
 	}
 	public PublicoGeralVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf,
-			int notaAplicacao) {
-		super(nome, dtNascimento, tipoPessoa, sexo, cpf, notaAplicacao);
+			VacinaVO[] vacinasAplicadas, int notaAplicacao) {
+		super(nome, dtNascimento, tipoPessoa, sexo, cpf, vacinasAplicadas, notaAplicacao);
 	}
 	
 	

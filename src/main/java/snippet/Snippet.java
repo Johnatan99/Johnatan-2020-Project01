@@ -1,0 +1,54 @@
+package snippet;
+
+public class Snippet {
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+	C:\Program Files\Java\jdk-13.0.1\lib\jrt-fs.jar
+}
+

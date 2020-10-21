@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class PesquisadorVO extends PessoaVO {
 	
 	private String instituicao;
-	private int vacinaCriada;
+	private VacinaVO[] vacinasCriadas;
 	public PesquisadorVO() {
 		super();
 	}
 	
 	public PesquisadorVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf,
-			int notaAplicacao, String instituicao, int vacinaCriada) {
-		super(nome, dtNascimento, tipoPessoa, sexo, cpf, notaAplicacao);
+			int notaAplicacao, String instituicao, VacinaVO[] vacinasAplicadas, VacinaVO[] vacinasCriadas) {
+		super(nome, dtNascimento, tipoPessoa, sexo, cpf, vacinasAplicadas, notaAplicacao);
 		this.instituicao = instituicao;
-		this.vacinaCriada = vacinaCriada;
+		this.vacinasCriadas = vacinasCriadas;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -26,10 +26,10 @@ public class PesquisadorVO extends PessoaVO {
 		this.instituicao = instituicao;
 	}
 	
-	public int getVacinaCriada() {
-		return vacinaCriada;
+	public VacinaVO[] getVacinasCriadas() {
+		return vacinasCriadas;
 	}
-	public void setVacinaCriada (int vacinaCriada) {
-		this.vacinaCriada = vacinaCriada;
+	public void setVacinasCriadas (VacinaVO[] vacinasCriadas) {
+		this.vacinasCriadas = vacinasCriadas;
 	}
 }

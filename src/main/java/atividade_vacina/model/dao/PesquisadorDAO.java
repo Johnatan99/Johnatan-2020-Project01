@@ -23,7 +23,8 @@ public class PesquisadorDAO {
 		
 		try {
 			ps.setString(1, novoPesquisador.getInstituicao());
-			ps.setInt(2,  novoPesquisador.getVacinaCriada());
+		//vacinas criadas
+			
 			int codigoRetorno = ps.executeUpdate();
 			
 			if(codigoRetorno == Banco.CODIGO_RETORNO_SUCESSO) {
@@ -52,7 +53,7 @@ public class PesquisadorDAO {
 		
 		try {
 			ps.setString(1, pesquisadorAlterado.getInstituicao());
-			ps.setInt(2,  pesquisadorAlterado.getVacinaCriada());
+			//ps.setInt(2,  pesquisadorAlterado.getVacinaCriada());
 			ps.setInt(3, pessoa.getId());
 			ps.setInt(4,  pesquisadorAlterado.getId());
 			
@@ -65,4 +66,64 @@ public class PesquisadorDAO {
 		}
 	return alterou;
 	}
+	
+	public boolean excluir(int id) {
+		Connection conn = Banco.getConnection();
+		String sql = "delete from pesquisador where id = ?";
+		PreparedStatement ps = Banco.getPreparedStatement(conn, sql);
+		boolean excluiu = false;
+		
+		try {
+			ps.setInt(1, id);
+			int codigoRetorno = ps.executeUpdate();
+			excluiu = (codigoRetorno == Banco.CODIGO_RETORNO_SUCESSO);
+		} catch (SQLException e){
+			System.out.println("Erro ao excluir pesquisador. \nErro: "+e.getMessage());
+		}
+		
+		return excluiu;
+	}
+	
+	public PesquisadorVO criarPesquisadorDoResultSet(ResultSet rs) throws SQLException {
+		PesquisadorVO pesquisadorBuscado = new PesquisadorVO();
+		pesquisadorBuscado.setId(rs.getInt("id"));
+		pesquisadorBuscado.setInstituicao(rs.getString("instituicao"));
+		//vacinas criadas
+		return pesquisadorBuscado;
+	}
+	
+	public List<PesquisadorVO> buscarTodos(){
+		Connection conn = Banco.getConnection();
+		String sql = "selext *"
+				   + "from pesquisador";
+		PreparedStatement ps = Banco.getPreparedStatement(conn, sql);
+		List<PesquisadorVO> pesquisadoresEncontrados = new ArrayList<PesquisadorVO>();
+		try {
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				PesquisadorVO pesquisadorEncontrado = criarPesquisadorDoResultSet(rs);
+				pesquisadoresEncontrados.add(pesquisadorEncontrado);
+			}
+		}catch(SQLException e) {
+			System.out.println("Erro ao buscar todas Pessoas. \nErro :"+e.getMessage());
+		}finally {
+			Banco.closeConnection(conn);
+			Banco.closePreparedStatement(ps);
+		}
+		return pesquisadoresEncontrados;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,15 +10,17 @@ public class PessoaVO {
 	private String tipoPessoa;
 	private String sexo;
 	private String cpf;
+	private VacinaVO[] vacinasAplicadas;
 	private int notaAplicacao;
 	
-	public PessoaVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf, int notaAplicacao) {
+	public PessoaVO(String nome, LocalDate dtNascimento, String tipoPessoa, String sexo, String cpf, VacinaVO[] vacinasAplicadas, int notaAplicacao) {
 		super();
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
 		this.tipoPessoa = tipoPessoa;
 		this.sexo = sexo;
 		this.cpf = cpf;
+		this.vacinasAplicadas = vacinasAplicadas;
 		this.notaAplicacao = notaAplicacao;
 	}
 	public PessoaVO() {
@@ -60,6 +62,12 @@ public class PessoaVO {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	public VacinaVO[] getVacinasAplicadas() {
+		return vacinasAplicadas;
+	}
+	public void setVacinasAplicadas(VacinaVO[] vacinasAplicadas) {
+		this.vacinasAplicadas = vacinasAplicadas;
 	}
 	public int getNotaAplicacao() {
 		return notaAplicacao;

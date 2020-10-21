@@ -6,7 +6,9 @@ create table pessoa(
     nome varchar(150) not null,
     dtNascimento date not null,
     sexo char not null,
-    cpf varchar(11) not null,
+    cpf character varying(11) not null,
+    tipoPessoa varchar(20) not null,
+    vacinasAplicadas int,
     notaAplicacao int not null,
     primary key(id)
 );
@@ -35,6 +37,7 @@ create table vacina(
     pais varchar(50) not null,
     estagio varchar(20),
     dtInicioPesquisa date not null,
+    dtTerminoPesquisa date not null,
     idPesquisador int not null,
     primary key(id),
     foreign key(idPesquisador) references Pesuisador(id)
